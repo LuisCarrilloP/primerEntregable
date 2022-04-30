@@ -1,24 +1,24 @@
 import React from 'react';
 import quotes from "../quotes.json"
 import { useState } from 'react';
+import Button from './Button';
 
 const colorsArray = ["red", "lightcoral", "lightgreen", "lightblue", "lightsalmon", "lightseagreen", "lightskyblue", "lightgray"]
 
 const QuoteBox = () => {
 
-    /* set random quote */
+    //set random quote
     const [ newQuote, setNewQuote ] = useState( Math.floor(Math.random() * quotes.length) )
     const changeQuote = () => {
-        const randomIndex = Math.floor(Math.random() * quotes.length)
-        setNewQuote( randomIndex )
+    const randomIndex = Math.floor(Math.random() * quotes.length)
+    setNewQuote( randomIndex )
+}
 
-    }
-
-    /* random color generator */
+    //random color generator
     const randomColor = Math.floor(Math.random () * colorsArray.length)
 
 
-    /* compact  var */
+    //compact  var
     const quoteRandom = quotes[newQuote]
 
     document.body.style = `background: ${colorsArray[randomColor]}`
@@ -26,6 +26,7 @@ const QuoteBox = () => {
 
     /* check json */
     /* console.log(quotes); */
+    
     return (
         <div className='Box' /* style={{backgroundColor:colorsArray[randomColor]}} */>
             <ul className='ul'>
@@ -40,9 +41,7 @@ const QuoteBox = () => {
                     <span className='span'>-{quoteRandom.author}</span>
                 </li>
                 <li className='nextQuote'>
-                    <button onClick={changeQuote} style={{backgroundColor:colorsArray[randomColor]}} className="nextQuoteButton">
-                        <i className="fa-solid fa-angle-right"></i>
-                    </button>
+                    <Button changeQuote={changeQuote} randomColor={randomColor} colorsArray={colorsArray} />
                 </li>
             </ul>
         </div>

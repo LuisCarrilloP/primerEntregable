@@ -1,16 +1,16 @@
 import { useState } from "react";
 import React from 'react';
 
-const Bulb = () => {
+const Bulb = ({ isOn, toggle }) => {
 
-    const [ state, setState ] = useState(true)
+    /* const [ state, setState ] = useState(true)
 
-    const changeState = () => setState (!state)
+    const changeState = () => setState (!state) */
     
     return (
         <div className="App">
-            <div className={`bulb ${state ? "on" : "off"}`}></div>
-            <button onClick={changeState}>{state ? "ON" : "OFF"}</button>
+            <div className="bulb" style={{background: isOn ? "#ffff00" : "gray"}}></div>
+            <button onClick={toggle}>{isOn ? "ON" : "OFF"}</button>
         </div>
     );
 };
